@@ -6,3 +6,11 @@ C:\Users\MIB\Desktop\AccountSystemApplication\DAL.Fake\bin\Debug\DAL.Interface.p
 C:\Users\MIB\Desktop\AccountSystemApplication\DAL.Fake\obj\Debug\DAL.Fake.dll
 C:\Users\MIB\Desktop\AccountSystemApplication\DAL.Fake\obj\Debug\DAL.Fake.pdb
 C:\Users\MIB\Desktop\AccountSystemApplication\DAL.Fake\obj\Debug\DAL.Fake.csprojResolveAssemblyReference.cache
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\bin\Debug\DAL.Fake.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\bin\Debug\DAL.Fake.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\bin\Debug\DAL.Interface.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\bin\Debug\DAL.Interface.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\obj\Debug\DAL.Fake.csprojResolveAssemblyReference.cache
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\obj\Debug\DAL.Fake.csproj.CoreCompileInputs.cache
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\obj\Debug\DAL.Fake.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Fake\obj\Debug\DAL.Fake.pdb
