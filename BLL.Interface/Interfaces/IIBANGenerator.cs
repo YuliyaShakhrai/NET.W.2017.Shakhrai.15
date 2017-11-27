@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL.Interface.Interfaces
+﻿namespace BLL.Interface.Interfaces
 {
     public interface IIBANGenerator
     {
+        /// <summary>
+        /// Generates an account's IBAN
+        /// </summary>
+        /// <returns>Account's IBAN</returns>
+        string GenerateAccountNumber();
     }
 }

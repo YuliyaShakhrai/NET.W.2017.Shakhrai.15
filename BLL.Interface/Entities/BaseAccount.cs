@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL.Interface.Entities
+﻿namespace BLL.Interface.Entities
 {
     public sealed class BaseAccount : BankAccount
     {
-        #region Private fields
-
-        #endregion
-
         #region Constructors
 
-        public BaseAccount(string iban, string firstName, string lastName) : base(iban, firstName, lastName)
-        {
-        }
-
-        public BaseAccount(string iban, string firstName, string lastName, decimal balance, long bonusPoints, bool isClosed) : base(iban, firstName, lastName, balance, bonusPoints, isClosed)
+        public BaseAccount(string iban, string firstName, string lastName, decimal balance = 0, long bonusPoints = 0, bool isClosed = false) : base(iban, firstName, lastName, balance, bonusPoints, isClosed)
         {
         }
 

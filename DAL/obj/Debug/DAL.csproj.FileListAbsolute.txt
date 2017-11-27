@@ -8,3 +8,13 @@ C:\Users\MIB\Desktop\AccountSystemApplication\DAL\obj\Debug\DAL.dll
 C:\Users\MIB\Desktop\AccountSystemApplication\DAL\obj\Debug\DAL.pdb
 C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\System.ValueTuple.dll
 C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\System.ValueTuple.xml
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\DAL.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\DAL.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\DAL.Interface.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\System.ValueTuple.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\DAL.Interface.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\System.ValueTuple.xml
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.pdb

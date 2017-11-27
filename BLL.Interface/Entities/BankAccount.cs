@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Interface.Entities
 {
@@ -21,29 +17,18 @@ namespace BLL.Interface.Entities
         #region Constructors
 
         /// <summary>
-        /// Creates bank account with zero balance and bonus points.
+        /// Creates bank account.
         /// </summary>
         /// <param name="iban">Account's IBAN.</param>
         /// <param name="firstName">First name of the account's owner.</param>
         /// <param name="lastName">Last name of the account's owner.</param>
-        public BankAccount(string iban, string firstName, string lastName)
+        /// <param name="balance">Account balance. Default is 0.</param>
+        /// <param name="bonusPoints">Account bonus points. Default is 0.</param>
+        /// <param name="isClosed">Account's state. Default isClosed = false.</param>
+        public BankAccount(string iban, string firstName, string lastName, decimal balance = 0, long bonusPoints = 0, bool isClosed = false)
         {
-            Iban = iban;
-            FirstName = firstName;
-            LastName = lastName;
-        }
+            VerifyInput(iban, firstName, lastName, balance, bonusPoints);
 
-        /// <summary>
-        /// Creates bank account with input balance and bonus points.
-        /// </summary>
-        /// <param name="id">Client's id.</param>
-        /// <param name="firstName">First name of the account's owner.</param>
-        /// <param name="lastName">Last name of the account's owner.</param>
-        /// <param name="balance">Account balance.</param>
-        /// <param name="bonusPoints">Account bonus points.</param>
-        /// <param name="isClosed">Account status.</param>
-        public BankAccount(string iban, string firstName, string lastName, decimal balance, long bonusPoints, bool isClosed)
-        {
             Iban = iban;
             FirstName = firstName;
             LastName = lastName;
@@ -89,14 +74,14 @@ namespace BLL.Interface.Entities
                 return _firstName;
             }
 
-            private set
+            set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException($"{nameof(FirstName)} cannot be null.");
                 }
 
-                _iban = value;
+                _firstName = value;
             }
         }
 
@@ -115,7 +100,7 @@ namespace BLL.Interface.Entities
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException($"{nameof(FirstName)} cannot be null.");
+                    throw new ArgumentNullException($"{nameof(LastName)} cannot be null.");
                 }
 
                 _lastName = value;
@@ -183,14 +168,6 @@ namespace BLL.Interface.Entities
         #region Public methods
 
         /// <summary>
-        /// Closes account.
-        /// </summary>
-        public void Close()
-        {
-            IsClosed = true;
-        }
-
-        /// <summary>
         /// Replenish amount to the account.
         /// </summary>
         /// <param name="amount">Amount.</param>
@@ -218,6 +195,51 @@ namespace BLL.Interface.Entities
 
             Balance -= amount;
             BonusPoints -= (long)((WithdrawBalanceCoeff * Balance) + (WithdrawValueCoeff * amount));
+        }
+
+        #endregion
+
+        #region Overriden Object methods
+
+        /// <summary>
+        /// Gets full account info string.
+        /// </summary>
+        /// <returns>Account's info</returns>
+        public override string ToString()
+        {
+            return $"IBAN: {Iban}" + $"Owner's first name: {FirstName}" + $"Owner's last name: {LastName}" + $"Balance: {Balance.ToString("C")}" + $"Bonus points: {BonusPoints}" + $"Is closed: {IsClosed}";
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private static void VerifyInput(string iban, string firstName, string secondName, decimal balance, long bonusPoints)
+        {
+            if (string.IsNullOrWhiteSpace($"{nameof(iban)} is null or empty."))
+            {
+                throw new ArgumentException(nameof(iban));
+            }
+
+            if (string.IsNullOrWhiteSpace(firstName))
+            {
+                throw new ArgumentException($"{nameof(firstName)} is null or empty.");
+            }
+
+            if (string.IsNullOrWhiteSpace(secondName))
+            {
+                throw new ArgumentException($"{nameof(secondName)} is null or empty.");
+            }
+
+            if (balance < 0)
+            {
+                throw new ArgumentException($"{nameof(balance)} is less than zero.");
+            }
+
+            if (bonusPoints < 0)
+            {
+                throw new ArgumentException($"{nameof(bonusPoints)} is less than zero.");
+            }
         }
 
         #endregion
