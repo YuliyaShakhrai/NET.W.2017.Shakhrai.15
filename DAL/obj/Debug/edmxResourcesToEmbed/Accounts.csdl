@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AccountDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountIBAN" />
+    </Key>
+    <Property Name="AccountIBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OwnerId" Type="Int32" Nullable="false" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BonusPoints" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AccountType" Relationship="AccountDBModel.FK_Accounts_ToAccountTypes" FromRole="Account" ToRole="AccountType" />
+    <NavigationProperty Name="Owner" Relationship="AccountDBModel.FK_Accounts_ToOwners" FromRole="Account" ToRole="Owner" />
+  </EntityType>
+  <EntityType Name="AccountType">
+    <Key>
+      <PropertyRef Name="AccountTypeId" />
+    </Key>
+    <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Accounts" Relationship="AccountDBModel.FK_Accounts_ToAccountTypes" FromRole="AccountType" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="OwnerId" />
+    </Key>
+    <Property Name="OwnerId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Accounts" Relationship="AccountDBModel.FK_Accounts_ToOwners" FromRole="Owner" ToRole="Account" />
+  </EntityType>
+  <EntityContainer Name="AccountsDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="AccountTypes" EntityType="Self.AccountType" />
+    <EntitySet Name="Owners" EntityType="Self.Owner" />
+    <AssociationSet Name="FK_Accounts_ToAccountTypes" Association="AccountDBModel.FK_Accounts_ToAccountTypes">
+      <End Role="AccountType" EntitySet="AccountTypes" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accounts_ToOwners" Association="AccountDBModel.FK_Accounts_ToOwners">
+      <End Role="Owner" EntitySet="Owners" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Accounts_ToAccountTypes">
+    <End Type="AccountDBModel.AccountType" Role="AccountType" Multiplicity="1" />
+    <End Type="AccountDBModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="AccountTypeId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="AccountTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accounts_ToOwners">
+    <End Type="AccountDBModel.Owner" Role="Owner" Multiplicity="1" />
+    <End Type="AccountDBModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="OwnerId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="OwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

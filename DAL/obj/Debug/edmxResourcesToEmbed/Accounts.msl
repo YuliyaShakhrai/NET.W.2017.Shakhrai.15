@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AccountDBModelStoreContainer" CdmEntityContainer="AccountsDB">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="AccountDBModel.Account">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="AccountIBAN" ColumnName="AccountIBAN" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="BonusPoints" ColumnName="BonusPoints" />
+          <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountTypes">
+      <EntityTypeMapping TypeName="AccountDBModel.AccountType">
+        <MappingFragment StoreEntitySet="AccountTypes">
+          <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

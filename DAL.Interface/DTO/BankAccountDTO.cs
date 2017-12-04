@@ -7,7 +7,7 @@ namespace DAL.Interface.DTO
         /// <summary>
         /// Account type.
         /// </summary>
-        public Type AccountType { get; set; }
+        public int AccountType { get; set; }
 
         /// <summary>
         /// Gets account's IBAN.
@@ -15,14 +15,9 @@ namespace DAL.Interface.DTO
         public string IBAN { get; set; }
 
         /// <summary>
-        /// Gets first name of the account's owner.
+        /// Gets Id of the account's owner.
         /// </summary>
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// Gets last name of the account's owner.
-        /// </summary>
-        public string LastName { get; set; }
+        public int OwnersId { get; set; }
 
         /// <summary>
         /// Gets current balance of the account.
@@ -32,11 +27,21 @@ namespace DAL.Interface.DTO
         /// <summary>
         /// Gets current bonus points of the account.
         /// </summary>
-        public long BonusPoints { get; set; }
+        public int BonusPoints { get; set; }
 
         /// <summary>
         /// Gets a state of the account: is closed or not.
         /// </summary>
         public bool IsClosed { get; set; }
+
+        public BankAccountDTO(int accountType, string iban, int ownersId, decimal balance, int bonusPoints, bool isClosed)
+        {
+            AccountType = accountType;
+            IBAN = iban;
+            OwnersId = ownersId;
+            Balance = balance;
+            BonusPoints = bonusPoints;
+            IsClosed = isClosed;
+        }
     }
 }

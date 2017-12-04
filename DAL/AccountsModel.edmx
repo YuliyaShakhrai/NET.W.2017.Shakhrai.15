@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AccountsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountIBAN" />
+          </Key>
+          <Property Name="AccountIBAN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BonusPoints" Type="int" Nullable="false" />
+          <Property Name="AccountTypeId" Type="int" Nullable="false" />
+          <Property Name="IsClosed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountTypes">
+          <Key>
+            <PropertyRef Name="AccountTypeId" />
+          </Key>
+          <Property Name="AccountTypeId" Type="int" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accounts_ToAccountTypes">
+          <End Role="AccountTypes" Type="Self.AccountTypes" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypes">
+              <PropertyRef Name="AccountTypeId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_ToOwners">
+          <End Role="Owners" Type="Self.Owners" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owners">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AccountsDBModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Owners" EntityType="Self.Owners" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accounts_ToAccountTypes" Association="Self.FK_Accounts_ToAccountTypes">
+            <End Role="AccountTypes" EntitySet="AccountTypes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_ToOwners" Association="Self.FK_Accounts_ToOwners">
+            <End Role="Owners" EntitySet="Owners" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AccountsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountIBAN" />
+          </Key>
+          <Property Name="AccountIBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BonusPoints" Type="Int32" Nullable="false" />
+          <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AccountType" Relationship="Self.FK_Accounts_ToAccountTypes" FromRole="Accounts" ToRole="AccountTypes" />
+          <NavigationProperty Name="Owner" Relationship="Self.FK_Accounts_ToOwners" FromRole="Accounts" ToRole="Owners" />
+        </EntityType>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="AccountTypeId" />
+          </Key>
+          <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_ToAccountTypes" FromRole="AccountTypes" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_ToOwners" FromRole="Owners" ToRole="Accounts" />
+        </EntityType>
+        <Association Name="FK_Accounts_ToAccountTypes">
+          <End Role="AccountTypes" Type="Self.AccountType" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypes">
+              <PropertyRef Name="AccountTypeId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_ToOwners">
+          <End Role="Owners" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owners">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AccountsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountType" />
+          <EntitySet Name="Owners" EntityType="Self.Owner" />
+          <AssociationSet Name="FK_Accounts_ToAccountTypes" Association="Self.FK_Accounts_ToAccountTypes">
+            <End Role="AccountTypes" EntitySet="AccountTypes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_ToOwners" Association="Self.FK_Accounts_ToOwners">
+            <End Role="Owners" EntitySet="Owners" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AccountsDBModelStoreContainer" CdmEntityContainer="AccountsDBEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="AccountsDBModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AccountIBAN" ColumnName="AccountIBAN" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="BonusPoints" ColumnName="BonusPoints" />
+                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTypes">
+            <EntityTypeMapping TypeName="AccountsDBModel.AccountType">
+              <MappingFragment StoreEntitySet="AccountTypes">
+                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="AccountsDBModel.Owner">
+              <MappingFragment StoreEntitySet="Owners">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

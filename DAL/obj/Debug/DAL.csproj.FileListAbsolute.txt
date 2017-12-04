@@ -18,3 +18,8 @@ D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.csprojResolveAssemblyR
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\obj\Debug\DAL.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\DAL.dll.config
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.xml
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.SqlServer.xml

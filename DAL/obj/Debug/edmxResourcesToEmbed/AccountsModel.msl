@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AccountsDBModelStoreContainer" CdmEntityContainer="AccountsDBEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="AccountsDBModel.Account">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="AccountIBAN" ColumnName="AccountIBAN" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="BonusPoints" ColumnName="BonusPoints" />
+          <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountTypes">
+      <EntityTypeMapping TypeName="AccountsDBModel.AccountType">
+        <MappingFragment StoreEntitySet="AccountTypes">
+          <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Owners">
+      <EntityTypeMapping TypeName="IsTypeOf(AccountsDBModel.Owner)">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

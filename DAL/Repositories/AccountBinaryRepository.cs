@@ -51,11 +51,10 @@ namespace DAL.Repositories
                 using (var writer = new BinaryWriter(stream))
                 {
                     writer.Write(bankAccountDTO.IBAN);
-                    writer.Write(bankAccountDTO.FirstName);
-                    writer.Write(bankAccountDTO.LastName);
+                    writer.Write(bankAccountDTO.OwnersId);
                     writer.Write(bankAccountDTO.Balance);
                     writer.Write(bankAccountDTO.BonusPoints);
-                    writer.Write(bankAccountDTO.AccountType.ToString()); ////TODO: how to write Type to binary file?
+                    writer.Write(bankAccountDTO.AccountType);
                     writer.Write(bankAccountDTO.IsClosed);
                 }
             }
