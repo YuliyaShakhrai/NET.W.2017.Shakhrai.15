@@ -4,7 +4,7 @@
     {
         #region Constructors
 
-        public PlatinumAccount(string iban, string firstName, string lastName, decimal balance = 0, long bonusPoints = 0, bool isClosed = false) : base(iban, firstName, lastName, balance, bonusPoints, isClosed)
+        public PlatinumAccount(string iban, int ownersId, decimal balance = 0, int bonusPoints = 0, bool isClosed = false) : base(iban, ownersId, balance, bonusPoints, isClosed)
         {
         }
 

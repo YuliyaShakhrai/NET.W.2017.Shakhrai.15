@@ -7,10 +7,9 @@ namespace BLL.Interface.Entities
         #region Private fields
 
         private string _iban;
-        private string _firstName;
-        private string _lastName;
+        private int _ownersId;
         private decimal _balance;
-        private long _bonusPoints;
+        private int _bonusPoints;
 
         #endregion
 
@@ -20,18 +19,16 @@ namespace BLL.Interface.Entities
         /// Creates bank account.
         /// </summary>
         /// <param name="iban">Account's IBAN.</param>
-        /// <param name="firstName">First name of the account's owner.</param>
-        /// <param name="lastName">Last name of the account's owner.</param>
+        /// <param name="ownersId">Id of the account's owner.</param>
         /// <param name="balance">Account balance. Default is 0.</param>
         /// <param name="bonusPoints">Account bonus points. Default is 0.</param>
         /// <param name="isClosed">Account's state. Default isClosed = false.</param>
-        public BankAccount(string iban, string firstName, string lastName, decimal balance = 0, long bonusPoints = 0, bool isClosed = false)
+        public BankAccount(string iban, int ownersId, decimal balance = 0, int bonusPoints = 0, bool isClosed = false)
         {
-            VerifyInput(iban, firstName, lastName, balance, bonusPoints);
+            VerifyInput(iban, ownersId, balance, bonusPoints);
 
             Iban = iban;
-            FirstName = firstName;
-            LastName = lastName;
+            OwnersId = ownersId;
             Balance = balance;
             BonusPoints = bonusPoints;
             IsClosed = isClosed;
@@ -64,46 +61,24 @@ namespace BLL.Interface.Entities
         }
 
         /// <summary>
-        /// First name of the account's owner.
+        /// Id of the account's owner.
         /// </summary>
         /// <exception cref="ArgumentNullException">Value is null.</exception>
-        public string FirstName
+        public int OwnersId
         {
             get
             {
-                return _firstName;
+                return _ownersId;
             }
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (value <= 0)
                 {
-                    throw new ArgumentNullException($"{nameof(FirstName)} cannot be null.");
+                    throw new ArgumentOutOfRangeException($"{nameof(value)} cannot be lesser than one.");
                 }
 
-                _firstName = value;
-            }
-        }
-
-        /// <summary>
-        /// Last name of the account's owner.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">Value is null.</exception>
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException($"{nameof(LastName)} cannot be null.");
-                }
-
-                _lastName = value;
+                _ownersId = value;
             }
         }
 
@@ -132,7 +107,7 @@ namespace BLL.Interface.Entities
         /// <summary>
         /// Current bonus points on the account.
         /// </summary>
-        public long BonusPoints
+        public int BonusPoints
         {
             get
             {
@@ -179,7 +154,7 @@ namespace BLL.Interface.Entities
             }
 
             Balance += amount;
-            BonusPoints += (long)((ReplenishBalanceCoeff * Balance) + (ReplenishValueCoeff * amount));
+            BonusPoints += (int)((ReplenishBalanceCoeff * Balance) + (ReplenishValueCoeff * amount));
         }
 
         /// <summary>
@@ -194,7 +169,7 @@ namespace BLL.Interface.Entities
             }
 
             Balance -= amount;
-            BonusPoints -= (long)((WithdrawBalanceCoeff * Balance) + (WithdrawValueCoeff * amount));
+            BonusPoints -= (int)((WithdrawBalanceCoeff * Balance) + (WithdrawValueCoeff * amount));
         }
 
         #endregion
@@ -207,28 +182,23 @@ namespace BLL.Interface.Entities
         /// <returns>Account's info</returns>
         public override string ToString()
         {
-            return $"IBAN: {Iban}" + $"Owner's first name: {FirstName}" + $"Owner's last name: {LastName}" + $"Balance: {Balance.ToString("C")}" + $"Bonus points: {BonusPoints}" + $"Is closed: {IsClosed}";
+            return $"IBAN: {Iban}" + $"Owner's Id: {OwnersId}" + $"Balance: {Balance.ToString("C")}" + $"Bonus points: {BonusPoints}" + $"Is closed: {IsClosed}";
         }
 
         #endregion
 
         #region Private methods
 
-        private static void VerifyInput(string iban, string firstName, string secondName, decimal balance, long bonusPoints)
+        private static void VerifyInput(string iban, int ownersId, decimal balance, long bonusPoints)
         {
             if (string.IsNullOrWhiteSpace($"{nameof(iban)} is null or empty."))
             {
                 throw new ArgumentException(nameof(iban));
             }
 
-            if (string.IsNullOrWhiteSpace(firstName))
+            if (ownersId <= 0)
             {
-                throw new ArgumentException($"{nameof(firstName)} is null or empty.");
-            }
-
-            if (string.IsNullOrWhiteSpace(secondName))
-            {
-                throw new ArgumentException($"{nameof(secondName)} is null or empty.");
+                throw new ArgumentOutOfRangeException($"{nameof(ownersId)} cannot be lesser than one.");
             }
 
             if (balance < 0)

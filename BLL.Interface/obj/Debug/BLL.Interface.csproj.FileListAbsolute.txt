@@ -5,7 +5,11 @@ C:\Users\MIB\Desktop\AccountSystemApplication\BLL.Interface\obj\Debug\BLL.Interf
 C:\Users\MIB\Desktop\AccountSystemApplication\BLL.Interface\obj\Debug\BLL.Interface.pdb
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\BLL.Interface.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\BLL.Interface.pdb
-D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\obj\Debug\BLL.Interface.csprojResolveAssemblyReference.cache
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\obj\Debug\BLL.Interface.csproj.CoreCompileInputs.cache
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\obj\Debug\BLL.Interface.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\obj\Debug\BLL.Interface.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\BLL.Interface.dll.config
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.xml
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.SqlServer.xml
