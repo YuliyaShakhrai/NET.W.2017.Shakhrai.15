@@ -34,3 +34,9 @@ D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\obj\Debug\DependencyR
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\obj\Debug\DependencyResolver.csproj.CoreCompileInputs.cache
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\obj\Debug\DependencyResolver.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\obj\Debug\DependencyResolver.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\bin\Debug\BLL.Interface.dll.config
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\bin\Debug\DAL.dll.config
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\bin\Debug\EntityFramework.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\bin\Debug\EntityFramework.xml
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\bin\Debug\BankDB.mdf
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DependencyResolver\bin\Debug\BankDB_log.ldf
