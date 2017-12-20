@@ -18,10 +18,10 @@ namespace DAL
         public int OwnerId { get; set; }
         public decimal Balance { get; set; }
         public int BonusPoints { get; set; }
-        public int AccountTypeId { get; set; }
+        public string AccountType { get; set; }
         public bool IsClosed { get; set; }
     
-        public virtual AccountType AccountType { get; set; }
+        public virtual AccountType AccountType1 { get; set; }
         public virtual Owner Owner { get; set; }
     }
 }

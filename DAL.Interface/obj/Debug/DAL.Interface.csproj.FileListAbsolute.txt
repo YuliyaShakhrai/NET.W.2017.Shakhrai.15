@@ -9,4 +9,3 @@ D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Interface\bin\Debug\DAL.Interface.pd
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Interface\obj\Debug\DAL.Interface.csproj.CoreCompileInputs.cache
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Interface\obj\Debug\DAL.Interface.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Interface\obj\Debug\DAL.Interface.pdb
-D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL.Interface\obj\Debug\DAL.Interface.csprojResolveAssemblyReference.cache

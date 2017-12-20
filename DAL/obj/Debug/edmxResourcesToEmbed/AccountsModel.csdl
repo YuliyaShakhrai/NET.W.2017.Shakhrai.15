@@ -8,16 +8,16 @@
     <Property Name="OwnerId" Type="Int32" Nullable="false" />
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="BonusPoints" Type="Int32" Nullable="false" />
-    <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeId" Type="String" Nullable="false" />
+    <Property Name="IsClosed" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="AccountType" Relationship="Self.FK_Accounts_ToAccountTypes" FromRole="Accounts" ToRole="AccountTypes" />
     <NavigationProperty Name="Owner" Relationship="Self.FK_Accounts_ToOwners" FromRole="Accounts" ToRole="Owners" />
-    <Property Name="IsClosed" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="AccountType">
     <Key>
       <PropertyRef Name="AccountTypeId" />
     </Key>
-    <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeId" Type="String" Nullable="false" />
     <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_ToAccountTypes" FromRole="AccountTypes" ToRole="Accounts" />
   </EntityType>
@@ -29,7 +29,6 @@
     <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_ToOwners" FromRole="Owners" ToRole="Accounts" />
-    <Property Name="IsClosed" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_Accounts_ToAccountTypes">
     <End Role="AccountTypes" Type="Self.AccountType" Multiplicity="1" />

@@ -20,7 +20,7 @@ namespace DAL
             this.Accounts = new HashSet<Account>();
         }
     
-        public int AccountTypeId { get; set; }
+        public string AccountType1 { get; set; }
         public string TypeName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -7,7 +7,7 @@ namespace DAL.Interface.DTO
         /// <summary>
         /// Account type.
         /// </summary>
-        public int AccountType { get; set; }
+        public string AccountType { get; set; }
 
         /// <summary>
         /// Gets account's IBAN.
@@ -34,7 +34,7 @@ namespace DAL.Interface.DTO
         /// </summary>
         public bool IsClosed { get; set; }
 
-        public BankAccountDTO(int accountType, string iban, int ownersId, decimal balance, int bonusPoints, bool isClosed)
+        public BankAccountDTO(string accountType, string iban, int ownersId, decimal balance, int bonusPoints, bool isClosed)
         {
             AccountType = accountType;
             IBAN = iban;

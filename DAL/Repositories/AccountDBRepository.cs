@@ -25,7 +25,7 @@ namespace DAL.Repositories
                     BonusPoints = bankAccountDTO.BonusPoints,
                     AccountIBAN = bankAccountDTO.IBAN,
                     OwnerId = bankAccountDTO.OwnersId,
-                    AccountTypeId = bankAccountDTO.AccountType
+                    AccountType = bankAccountDTO.AccountType
                 });
                 context.SaveChanges();
             }
@@ -50,7 +50,7 @@ namespace DAL.Repositories
             }
 
             return new BankAccountDTO(
-                account.AccountType.AccountTypeId,
+                account.AccountType.ToString(),
                 account.AccountIBAN,
                 account.OwnerId,
                 account.Balance,
@@ -71,7 +71,7 @@ namespace DAL.Repositories
             using (var context = new AccountsDBEntities())
             {
                 account = context.Accounts.Find(bankAccountDTO.IBAN);
-                account.AccountTypeId = bankAccountDTO.AccountType;
+                account.AccountType = bankAccountDTO.AccountType;
                 account.Balance = bankAccountDTO.Balance;
                 account.BonusPoints = bankAccountDTO.BonusPoints;
                 account.OwnerId = bankAccountDTO.OwnersId;

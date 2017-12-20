@@ -23,3 +23,5 @@ D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.SqlServer.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.xml
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\BankDB.mdf
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\DAL\bin\Debug\BankDB_log.ldf
