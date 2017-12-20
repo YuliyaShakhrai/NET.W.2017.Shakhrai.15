@@ -5,6 +5,9 @@ using BLL.Interface.Entities;
 using BLL.Interface.Interfaces;
 using DependencyResolver;
 using Ninject;
+using BLL.ServiceImplementation;
+using DAL.Repositories;
+
 
 namespace ConsolePL
 {
@@ -12,18 +15,13 @@ namespace ConsolePL
     {
         public static void Main(string[] args)
         {
-            const string CountryId = "BY";
-            const string ControlNumber = "12";
-            const string BankCode = "BBBB";
-            const string BalanceNumber = "3014";
+            var ibanGen = new IBANGenerator();
+            var repository = new AccountDBRepository();
+            var service = new AccountService(repository, ibanGen);
 
-            var result = new StringBuilder(28);
-            var rnd = new Random();
-            var accountNumber = rnd.Next(1, int.MaxValue);
-
-            var stringNumber = string.Format("{0}", accountNumber.ToString("D13"));
-
-            result.Append(CountryId).Append(ControlNumber).Append(BankCode).Append(BalanceNumber).Append(stringNumber).ToString();
+            var owner = new Owner(1, "Yuliya", "Shakhrai");
+            service.OpenAccount(1, 10, 0, false, AccountType.Basic);
+            service.OpenAccount(1, 0, 0, false, AccountType.Gold);
 
             Console.ReadLine();
         }

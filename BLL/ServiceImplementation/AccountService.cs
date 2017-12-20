@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BLL.Interface.Entities;
 using BLL.Interface.Interfaces;
 using DAL.Interface.Interfaces;
+using BLL.Mappers;
 
 namespace BLL.ServiceImplementation
 {
@@ -70,14 +71,58 @@ namespace BLL.ServiceImplementation
             throw new NotImplementedException();
         }
 
-        public string OpenAccount(string firstName, string lastName, AccountType accountType)
+        public string OpenAccount(int ownersId, decimal balance, int bonusPoints, bool isClosed, AccountType accountType)
         {
-            throw new NotImplementedException();
+            VerifyInput(ownersId, balance, bonusPoints);
+
+            string accountIban = IBANGenerator.GenerateAccountNumber();
+
+                var account = CreateAccount(accountIban, ownersId, balance, bonusPoints, isClosed, accountType);
+
+                Storage.Add(account.ToBankAccountDTO());
+
+                return accountIban;
         }
 
         public void Withdraw(string iban, decimal amount)
         {
             throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private static BankAccount CreateAccount(string iban, int ownersId, decimal balance, int bonusPoints, bool isClosed, AccountType accountType)
+        {
+            switch (accountType)
+            {
+                case AccountType.Gold:
+                    return new GoldAccount(iban, ownersId, balance, bonusPoints, isClosed);
+                case AccountType.Platinum:
+                    return new PlatinumAccount(iban, ownersId, balance, bonusPoints, isClosed);
+                case AccountType.Basic:
+                default:
+                    return new BasicAccount(iban, ownersId, balance, bonusPoints, isClosed);
+            }
+        }
+
+        private static void VerifyInput(int ownersId, decimal balance, int bonusPoints)
+        {
+            if (ownersId <= 0)
+            {
+                throw new ArgumentException($"{nameof(ownersId)} is lesser or equal to zero.");
+            }
+
+            if (balance < 0)
+            {
+                throw new ArgumentException($"{nameof(balance)} must be greater or equal to zero.");
+            }
+
+            if (bonusPoints < 0)
+            {
+                throw new ArgumentException($"{nameof(bonusPoints)} must be greater or equal to zero zero.");
+            }
         }
 
         #endregion

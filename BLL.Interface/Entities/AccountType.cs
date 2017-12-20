@@ -2,7 +2,7 @@
 {
     public enum AccountType
     {
-        Base,
+        Basic,
         Gold,
         Platinum
     }

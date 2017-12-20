@@ -13,3 +13,6 @@ D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.SqlServer.dll
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.xml
 D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\DAL.Interface.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\bin\Debug\DAL.Interface.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.15\BLL.Interface\obj\Debug\BLL.Interface.csprojResolveAssemblyReference.cache

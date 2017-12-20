@@ -12,11 +12,13 @@ namespace BLL.Interface.Interfaces
         /// <summary>
         /// Opens a bank account of specified type with input or default balance and bonus points.
         /// </summary>
-        /// <param name="firstName">Owner's first name.</param>
-        /// <param name="lastName">Owner's last name.</param>
+        /// <param name="firstName">Owner's ID.</param>
+        /// <param name="balance">Account balance.</param>
+        /// <param name="bonusPoints">Account bonus points.</param>
+        /// <param name="isClosed">Account status.</param>
         /// <param name="accountType">Type of the bank account.</param>
         /// <returns>New account's IBAN.</returns>
-        string OpenAccount(string firstName, string lastName, AccountType accountType);
+        string OpenAccount(int ownersId, decimal balance, int bonusPoints, bool isClosed, AccountType accountType);
 
         /// <summary>
         /// Closes the bank account with the specified IBAN and disables all the money operations.
